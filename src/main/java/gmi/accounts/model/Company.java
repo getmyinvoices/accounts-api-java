@@ -1,17 +1,19 @@
-package gmi.accounts;
+package gmi.accounts.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import gmi.accounts.AccountsApiMethodConstants;
+
 public class Company {
-    @JsonProperty(AccountsApiMethodConstants.PARAM_PRIMARY_UNIQUE_ID)
+    @JsonProperty(AccountsApiMethodConstants.PRIMARY_UNIQUE_ID)
     private int primaryUniqueId;
-    @JsonProperty(AccountsApiMethodConstants.PARAM_NAME)
+    @JsonProperty(AccountsApiMethodConstants.NAME)
     private String name;
-    @JsonProperty(AccountsApiMethodConstants.PARAM_COMPANY_TYPE)
+    @JsonProperty(AccountsApiMethodConstants.COMPANY_TYPE)
     private String companyType;
-    @JsonProperty(AccountsApiMethodConstants.PARAM_NOTE)
+    @JsonProperty(AccountsApiMethodConstants.NOTE)
     private String note;
-    @JsonProperty(AccountsApiMethodConstants.PARAM_TAGS)
+    @JsonProperty(AccountsApiMethodConstants.TAGS)
     private String tags;
 
     public int getPrimaryUniqueId() {

@@ -2,7 +2,7 @@ package gmi.accounts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ApiStatusResponse{
+class ApiStatusResponse{
     @JsonProperty(AccountsApiMethodConstants.STATUS_SUCCESS)
     private boolean success;
 

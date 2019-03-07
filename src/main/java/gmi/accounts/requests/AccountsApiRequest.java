@@ -1,6 +1,8 @@
-package gmi.accounts;
+package gmi.accounts.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import gmi.accounts.AccountsApiMethodConstants;
 
 public class AccountsApiRequest {
     @JsonProperty(AccountsApiMethodConstants.API_KEY)

@@ -8,6 +8,7 @@ import java.net.URI;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -15,7 +16,10 @@ import org.apache.http.impl.client.HttpClients;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public abstract class ExtendedHttpClient{
+import gmi.accounts.exceptions.GmiException;
+import gmi.accounts.requests.AccountsApiRequest;
+
+public abstract class ExtendedHttpClient {
 
     private final ObjectMapper objectMapper;
 
@@ -32,7 +36,7 @@ public abstract class ExtendedHttpClient{
         StringBuilder result = new StringBuilder();
         line = br.readLine();
 
-        while (line != null){
+        while (line != null) {
             result.append(line);
             line = br.readLine();
         }
@@ -54,24 +58,28 @@ public abstract class ExtendedHttpClient{
 
     <TResponse> TResponse getResponseFromBody(HttpResponse response, Class<TResponse> clazz) throws IOException {
         String responseBodyAsString = getResponseBodyAsString(response);
-        return objectMapper.readValue(responseBodyAsString,clazz);
+        return objectMapper.readValue(responseBodyAsString, clazz);
     }
 
 
-
-    <TResponse> Response<TResponse> makeRequest(String localPath, AccountsApiRequest request    , Class<TResponse> clazz) throws IOException {
+    <TResponse> TResponse makeRequest(String localPath, AccountsApiRequest request, Class<TResponse> clazz) throws IOException, GmiException {
         URI requestUrl = combineApiPath(localPath);
         HttpResponse response = makeRequest(requestUrl, request);
-        TResponse result = getResponseFromBody(response, clazz);
-        return new Response<TResponse>(result, response);
+        HandleHttpError(response);
+        return getResponseFromBody(response, clazz);
     }
 
-    private URI combineApiPath(String segment){
+    private URI combineApiPath(String segment) {
         return URI.create(AccountsApiMethodConstants.GMI_ACCOUNTS_URL + segment);
     }
 
+    protected void HandleHttpError(HttpResponse httpResponse) throws GmiException {
+        if (httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+            throw new GmiException(httpResponse.getStatusLine().getReasonPhrase());
+        }
+    }
 
-    protected class Response<TResponse>{
+    protected class Response<TResponse> {
         private TResponse response;
         private HttpResponse httpResponse;
 

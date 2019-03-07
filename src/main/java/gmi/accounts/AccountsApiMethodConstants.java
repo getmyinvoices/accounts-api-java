@@ -5,22 +5,29 @@ public class AccountsApiMethodConstants{
     static final String GMI_ACCOUNTS_URL = "https://api.getmyinvoices.com/accounts/v2";
     /* </apiBaseUri> */
 
-    /* <response> */
-    // status
+    /* <parameters> */
     static final String STATUS_SUCCESS = "success";
 
-    // company
-    static final String PARAM_PRIMARY_UNIQUE_ID = "prim_uid";
-    static final String PARAM_NAME = "name";
-    static final String PARAM_COMPANY_TYPE = "company_type";
-    static final String PARAM_NOTE = "note";
-    static final String PARAM_TAGS = "tags";
-
-    /* </response> */
-
-    /* <request> */
-    static final String API_KEY = "api_key";
-    /* </request> */
+    public static final String PRIMARY_UNIQUE_ID = "prim_uid";
+    public static final String COMPANY_ID = "company_id";
+    public static final String NAME = "name";
+    public static final String COMPANY_TYPE = "company_type";
+    public static final String NOTE = "note";
+    public static final String TAGS = "tags";
+    public static final String STREET = "street";
+    public static final String ZIP = "zip";
+    public static final String CITY = "city";
+    public static final String EMAIL = "email";
+    public static final String PHONE = "phone";
+    public static final String FAX = "fax";
+    public static final String TAX_NUMBER = "tax_number";
+    public static final String VAT_ID = "vat_id";
+    public static final String COMMERCIAL_REGISTER = "commercial_register";
+    public static final String IBAN = "iban";
+    public static final String BIC = "bic";
+    public static final String URL = "url";
+    public static final String API_KEY = "api_key";
+    /* </parameters> */
 
     /* <methodPaths> */
     static final String METHOD_API_STATUS = "/apiStatus";
@@ -37,5 +44,6 @@ public class AccountsApiMethodConstants{
     static final String METHOD_LIST_ATTACHMENTS = "/listAttachments";
     static final String METHOD_UPLOAD_ATTACHMENT = "/uploadAttachment";
     static final String METHOD_DELETE_ATTACHMENT = "/deleteAttachment";
+    static final String METHOD_UPDATE_DOCUMENT = "/updateDocument";
     /* </methodPaths>*/
 }

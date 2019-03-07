@@ -1,4 +1,4 @@
-package gmi.accounts;
+package gmi.accounts.model;
 
 import java.util.ArrayList;
 
