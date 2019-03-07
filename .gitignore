@@ -14,6 +14,10 @@ local*.yml
 out/
 /bin/
 
+### Credentials ###
+src/test/resources/.credentials
+#######
+
 
 # Created by https://www.gitignore.io/api/java,linux,gradle,eclipse,intellij,visualstudiocode
 
