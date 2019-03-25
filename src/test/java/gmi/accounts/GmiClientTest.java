@@ -13,6 +13,10 @@ import org.junit.Test;
 import gmi.accounts.exceptions.GmiException;
 import gmi.accounts.model.Companies;
 import gmi.accounts.model.CompanyDetails;
+import gmi.accounts.model.Countries;
+import gmi.accounts.model.Currencies;
+import gmi.accounts.model.Document;
+import gmi.accounts.model.Documents;
 
 public class GmiClientTest {
 
@@ -44,12 +48,12 @@ public class GmiClientTest {
 
     @Test
     public void listDocuments() throws IOException, GmiException {
-        this.client.listDocuments();
+        Documents documents = this.client.listDocuments();
     }
 
     @Test
     public void getDocument() throws IOException, GmiException {
-        this.client.getDocument();
+        Document document = this.client.getDocument(3364243);
     }
 
     @Test
@@ -64,12 +68,12 @@ public class GmiClientTest {
 
     @Test
     public void getCountries() throws IOException, GmiException {
-        this.client.getCountries();
+        Countries countries = this.client.getCountries();
     }
 
     @Test
     public void getCurrencies() throws IOException, GmiException {
-        this.client.getCurrencies();
+        Currencies currencies = this.client.getCurrencies();
     }
 
     @Test

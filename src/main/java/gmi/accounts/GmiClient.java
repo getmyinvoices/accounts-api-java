@@ -7,10 +7,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import gmi.accounts.exceptions.GmiException;
 import gmi.accounts.model.Companies;
 import gmi.accounts.model.CompanyDetails;
+import gmi.accounts.model.Countries;
+import gmi.accounts.model.Currencies;
+import gmi.accounts.model.Document;
+import gmi.accounts.model.Documents;
 import gmi.accounts.requests.AccountsApiRequest;
 import gmi.accounts.requests.ListCompaniesRequest;
 import gmi.accounts.requests.GetCompanyRequest;
 
+// https://api.getmyinvoices.com/accounts/v2/doc/
 public class GmiClient extends ExtendedHttpClient {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
@@ -23,29 +28,27 @@ public class GmiClient extends ExtendedHttpClient {
 
 
     public boolean apiStatus() throws IOException, GmiException {
-        AccountsApiRequest request = new AccountsApiRequest(this.apiKey);
-        ApiStatusResponse response = makeRequest(AccountsApiMethodConstants.METHOD_API_STATUS, request, ApiStatusResponse.class);
+        ApiStatusResponse response = makeRequest(AccountsApiMethodConstants.METHOD_API_STATUS, new AccountsApiRequest(this.apiKey), ApiStatusResponse.class);
         return response.getSuccess();
     }
 
     public Companies listCompanies() throws IOException, GmiException {
-        ListCompaniesRequest request = new ListCompaniesRequest(this.apiKey);
-        return makeRequest(AccountsApiMethodConstants.METHOD_LIST_COMPANIES, request, Companies.class);
+        // todo filter
+        return makeRequest(AccountsApiMethodConstants.METHOD_LIST_COMPANIES, new ListCompaniesRequest(this.apiKey), Companies.class);
     }
 
     public CompanyDetails getCompany(int companyId) throws IOException, GmiException {
-        AccountsApiRequest request = new GetCompanyRequest(this.apiKey, companyId);
-        return makeRequest(AccountsApiMethodConstants.METHOD_GET_COMPANY, request, CompanyDetails.class);
+        return makeRequest(AccountsApiMethodConstants.METHOD_GET_COMPANY, new GetCompanyRequest(this.apiKey, companyId), CompanyDetails.class);
     }
 
-    public void listDocuments() throws IOException, GmiException {
-        AccountsApiRequest request = null;
-        makeRequest(AccountsApiMethodConstants.METHOD_LIST_DOCUMENTS, request, Companies.class);
+    public Documents listDocuments() throws IOException, GmiException {
+        // todo filter
+        return makeRequest(AccountsApiMethodConstants.METHOD_LIST_DOCUMENTS, new AccountsApiRequest(this.apiKey), Documents.class);
     }
 
-    public void getDocument() throws IOException, GmiException {
-        AccountsApiRequest request = null;
-        makeRequest(AccountsApiMethodConstants.METHOD_GET_DOCUMENT, request, Companies.class);
+    public Document getDocument(int documentId) throws IOException, GmiException {
+        AccountsApiRequest request = new GetDocumentRequest(this.apiKey, documentId);
+        return makeRequest(AccountsApiMethodConstants.METHOD_GET_DOCUMENT, request, Document.class);
     }
 
     public void uploadNewDocument() throws IOException, GmiException {
@@ -58,14 +61,14 @@ public class GmiClient extends ExtendedHttpClient {
         makeRequest(AccountsApiMethodConstants.METHOD_UPDATE_DOCUMENT, request, Companies.class);
     }
 
-    public void getCountries() throws IOException, GmiException {
-        AccountsApiRequest request = null;
-        makeRequest(AccountsApiMethodConstants.METHOD_GET_COUNTRIES, request, Companies.class);
+    public Countries getCountries() throws IOException, GmiException {
+        AccountsApiRequest request = new AccountsApiRequest(this.apiKey);
+        return makeRequest(AccountsApiMethodConstants.METHOD_GET_COUNTRIES, request, Countries.class);
     }
 
-    public void getCurrencies() throws IOException, GmiException {
-        AccountsApiRequest request = null;
-        makeRequest(AccountsApiMethodConstants.METHOD_GET_CURRENCIES, request, Companies.class);
+    public Currencies getCurrencies() throws IOException, GmiException {
+        AccountsApiRequest request = new AccountsApiRequest(this.apiKey);
+        return makeRequest(AccountsApiMethodConstants.METHOD_GET_CURRENCIES, request, Currencies.class);
     }
 
     public void addCustomCompany() throws IOException, GmiException {
