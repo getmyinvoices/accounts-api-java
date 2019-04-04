@@ -5,15 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import gmi.accounts.AccountsApiMethodConstants;
 
 public class Company {
-    @JsonProperty(AccountsApiMethodConstants.PRIMARY_UNIQUE_ID)
+    @JsonProperty("prim_uid")
     private int primaryUniqueId;
-    @JsonProperty(AccountsApiMethodConstants.NAME)
+    @JsonProperty("name")
     private String name;
-    @JsonProperty(AccountsApiMethodConstants.COMPANY_TYPE)
+    @JsonProperty("company_type")
     private String companyType;
-    @JsonProperty(AccountsApiMethodConstants.NOTE)
+    @JsonProperty("note")
     private String note;
-    @JsonProperty(AccountsApiMethodConstants.TAGS)
+    @JsonProperty("tags")
     private String tags;
 
     public int getPrimaryUniqueId() {

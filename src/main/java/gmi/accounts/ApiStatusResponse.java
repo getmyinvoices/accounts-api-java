@@ -3,7 +3,7 @@ package gmi.accounts;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 class ApiStatusResponse{
-    @JsonProperty(AccountsApiMethodConstants.STATUS_SUCCESS)
+    @JsonProperty("success")
     private boolean success;
 
     public boolean getSuccess() {

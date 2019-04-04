@@ -6,7 +6,7 @@ import gmi.accounts.AccountsApiMethodConstants;
 
 public class GetCompanyRequest extends AccountsApiRequest {
 
-    @JsonProperty(AccountsApiMethodConstants.COMPANY_ID)
+    @JsonProperty("company_id")
     private int companyId;
 
     public GetCompanyRequest(String apiKey, int companyId) {

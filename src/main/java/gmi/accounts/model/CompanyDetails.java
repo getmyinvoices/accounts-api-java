@@ -4,37 +4,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import gmi.accounts.AccountsApiMethodConstants;
 
 public class CompanyDetails extends IdResponse {
-    @JsonProperty(AccountsApiMethodConstants.NAME)
+    @JsonProperty("name")
     private String name;
-    @JsonProperty(AccountsApiMethodConstants.COMPANY_TYPE)
+    @JsonProperty("company_type")
     private String companyType;
-    @JsonProperty(AccountsApiMethodConstants.NOTE)
+    @JsonProperty("note")
     private String note;
-    @JsonProperty(AccountsApiMethodConstants.TAGS)
+    @JsonProperty("tags")
     private String tags;
-    @JsonProperty(AccountsApiMethodConstants.STREET)
+    @JsonProperty("street")
     private String street;
-    @JsonProperty(AccountsApiMethodConstants.ZIP)
+    @JsonProperty("zip")
     private String zip;
-    @JsonProperty(AccountsApiMethodConstants.CITY)
+    @JsonProperty("city")
     private String city;
-    @JsonProperty(AccountsApiMethodConstants.EMAIL)
+    @JsonProperty("email")
     private String email;
-    @JsonProperty(AccountsApiMethodConstants.PHONE)
+    @JsonProperty("phone")
     private String phone;
-    @JsonProperty(AccountsApiMethodConstants.FAX)
+    @JsonProperty("fax")
     private String fax;
-    @JsonProperty(AccountsApiMethodConstants.TAX_NUMBER)
+    @JsonProperty("tax_number")
     private String taxNumber;
-    @JsonProperty(AccountsApiMethodConstants.VAT_ID)
+    @JsonProperty("vat_id")
     private String vatID;
-    @JsonProperty(AccountsApiMethodConstants.COMMERCIAL_REGISTER)
+    @JsonProperty("commercial_register")
     private String commercialRegister;
-    @JsonProperty(AccountsApiMethodConstants.IBAN)
+    @JsonProperty("iban")
     private String iban;
-    @JsonProperty(AccountsApiMethodConstants.BIC)
+    @JsonProperty("bic")
     private String bic;
-    @JsonProperty(AccountsApiMethodConstants.URL)
+    @JsonProperty("url")
     private String url;
 
     public String getName() {

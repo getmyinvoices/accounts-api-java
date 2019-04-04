@@ -5,7 +5,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import gmi.accounts.deserializers.FlexibleFloatDeserializer;
+import gmi.accounts.serialization.FlexibleFloatDeserializer;
 
 public class DocumentMetaData {
     @JsonProperty("prim_uid")
@@ -142,43 +142,3 @@ public class DocumentMetaData {
         return paymentDetails;
     }
 }
-
-/*
-* type:
- // int, long?
-"document_number": "4461526",
-
-// float
-"net_amount": "22,447.22",
-"gross_amount": "26,712.19",
-"vat": "19.00",
-"file_size": "114.00",
-
-// OffsetDateTime ?
-"document_date": "2019-01-08",
-"document_due_date": "2019-01-22",
-
-//enum
-"document_type": "INCOMING_INVOICE",
-"payment_status": "Unknown",
-"source": "Manual",
-"is_archived": "0",
-
-// object
-"payment_details": {}, // this one, down there \/
-
- {
-    "iban": "",
-    "bic": "",
-    "account_holder_name": "",
-    "account_number": "",
-    "bank_name": "",
-    "bank_address": "",
-    "sort_code": "",
-    "routing_number": "",
-    "ifsc_code": "",
-    "routing_code": "",
-    "cash_discount_date": 0,
-    "cash_discount_value": "0"
-}
- */

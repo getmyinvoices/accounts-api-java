@@ -3,7 +3,7 @@ package gmi.accounts.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import gmi.accounts.deserializers.BooleanFromBinaryStringDeserializer;
+import gmi.accounts.serialization.BooleanFromBinaryStringDeserializer;
 
 public class Country {
     @JsonProperty("prim_uid")

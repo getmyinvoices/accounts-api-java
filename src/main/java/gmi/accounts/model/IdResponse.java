@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import gmi.accounts.AccountsApiMethodConstants;
 
 public class IdResponse {
-    @JsonProperty(AccountsApiMethodConstants.PRIMARY_UNIQUE_ID)
+    @JsonProperty("prim_uid")
     private int primaryUniqueId;
 
     public int getPrimaryUniqueId() {

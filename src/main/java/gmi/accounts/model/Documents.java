@@ -1,24 +1,16 @@
 package gmi.accounts.model;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Documents   {
-    @JsonProperty("total_count")
-    private int totalCount;
+public class Documents extends CountedList<DocumentMetaData> {
     @JsonProperty("start")
     private int start;
     @JsonProperty("offset")
     private int offset;
-    @JsonProperty("records")
-    private ArrayList<DocumentMetaData> records;
 
     public Documents() {
-    }
-
-    public int getTotalCount() {
-        return totalCount;
     }
 
     public int getStart() {
@@ -27,10 +19,6 @@ public class Documents   {
 
     public int getOffset() {
         return offset;
-    }
-
-    public ArrayList<DocumentMetaData> getRecords() {
-        return records;
     }
 }
 

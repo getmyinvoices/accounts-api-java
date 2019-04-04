@@ -18,6 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import gmi.accounts.exceptions.GmiException;
 import gmi.accounts.requests.AccountsApiRequest;
+import sun.misc.IOUtils;
+import sun.nio.ch.IOUtil;
 
 public abstract class ExtendedHttpClient {
 
@@ -75,25 +77,17 @@ public abstract class ExtendedHttpClient {
 
     protected void HandleHttpError(HttpResponse httpResponse) throws GmiException {
         if (httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-            throw new GmiException(httpResponse.getStatusLine().getReasonPhrase());
-        }
-    }
+            InputStream content = null;
+            String error;
+            try {
+                content = httpResponse.getEntity().getContent();
+                byte[] data = IOUtils.readFully(content, content.available(), true);
+                error = new String(data);
+            } catch (IOException e) {
+                error = "additionally there was a problem while trying to read the error from the http response stream. the original error message could not be recovered";
+            }
 
-    protected class Response<TResponse> {
-        private TResponse response;
-        private HttpResponse httpResponse;
-
-        Response(TResponse response, HttpResponse httpResponse) {
-            this.response = response;
-            this.httpResponse = httpResponse;
-        }
-
-        TResponse getResponse() {
-            return response;
-        }
-
-        HttpResponse getHttpResponse() {
-            return httpResponse;
+            throw new GmiException(httpResponse.getStatusLine().getReasonPhrase(), error);
         }
     }
 }

@@ -1,4 +1,4 @@
-package gmi.accounts.deserializers;
+package gmi.accounts.serialization;
 
 import java.io.IOException;
 
